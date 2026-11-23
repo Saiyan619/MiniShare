@@ -9,9 +9,22 @@ const app = express();
 // needed on Render/Fly so the rate limiter sees real client IPs
 app.set("trust proxy", 1);
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://minshare.vercel.app",
+  ...(process.env.CLIENT_ORIGIN?.split(",").map((origin) => origin.trim()) ?? []),
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN ?? "http://localhost:5173", // Vite's default port
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error("Origin not allowed by CORS"));
+    },
   })
 );
 app.use(express.json({ limit: "100kb" })); // messages are capped at 10k chars, so this is plenty
