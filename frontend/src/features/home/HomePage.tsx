@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowRight, ExternalLink, LockKeyhole, Plus, Repeat2 } from 'lucide-react'
+import { ArrowRight, ExternalLink, LockKeyhole, Plus } from 'lucide-react'
 import { useMutation } from '@tanstack/react-query'
 import { useNavigate } from 'react-router'
 import { Button } from '../../components/ui/button'
@@ -79,9 +79,11 @@ export function HomePage() {
     <main className="min-h-dvh bg-page px-5 py-8 sm:px-8 md:px-[52px] md:py-12 lg:flex lg:items-center lg:px-[72px]">
       <div className="mx-auto w-full max-w-[1180px] lg:grid lg:grid-cols-[1fr_520px] lg:items-center lg:gap-20">
         <section className="md:max-w-[650px] lg:max-w-none">
-          <div className="mb-11 grid size-[76px] place-items-center rounded-[24px] bg-accent-fill text-ink md:size-[84px]">
-            <Repeat2 className="size-9" strokeWidth={2.4} />
-          </div>
+          <img
+            src="/minishare_icon.png"
+            alt="MiniShare"
+            className="mb-11 size-[76px] rounded-[24px] object-cover md:size-[84px]"
+          />
 
           <h1 className="text-[48px] leading-none font-[800] tracking-[-0.055em] text-ink md:text-[64px] lg:text-[72px]">
             MiniShare
