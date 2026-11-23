@@ -83,6 +83,7 @@ export function PairedRoom({
       toast.error('Could not copy the code')
     }
   }
+  
 
   let previousDate = ''
 
